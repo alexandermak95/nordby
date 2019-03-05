@@ -45,7 +45,7 @@ get_header();
              <div class="col-lg-10 content-head-holder" style="background-color:<?php the_field('container_color');?>">
                <?php while(have_rows('tillagg')) : the_row(); ?>
                  <?php if (get_row_layout() == 'textblock') : ?>
-                   <div class="content-block" style="background:<?php the_sub_field('background_color');?>;margin-top:<?php the_sub_field('margin_top');?>px; padding:10px <?php the_sub_field('padding');?>%">
+                   <div class="content-block" style="background:<?php the_sub_field('background_color');?>;margin-top:<?php the_sub_field('margin_top');?>px; padding:25px <?php the_sub_field('padding');?>%">
                      <?php the_sub_field('block'); ?>
                    </div>
                    <br>
@@ -84,7 +84,11 @@ get_header();
                <div class="row">
                  <div class="col-md-9 jobs">
                    <?php while($job->have_posts()) : $job->the_post(); ?>
-                     <?php the_content();?>
+                     <div class="job">
+                       <a href="<?php the_field('lank_till_butiken');?>"><img src="<?php the_field('logo');?>" alt=""></a>
+                       <h5><?php the_title();?></h5>
+                       <?php if ( has_excerpt( $post->ID ) ): the_excerpt();endif; the_content('Läs mer');?>
+                     </div>
                    <?php endwhile; ?>
                  </div>
                </div>

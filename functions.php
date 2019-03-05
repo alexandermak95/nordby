@@ -156,6 +156,44 @@ function my_acf_google_map_api( $api ){
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+function custom_excerpt_more ($more){
+  return '[...]';
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
 
 
+/* Show/Hide excerpt function */
+function nya_shortcodes() {
+   add_shortcode('read', 'egen_excerpt');
+}
+
+function egen_excerpt($atts, $content = null) {
+	extract(shortcode_atts(array(
+		'more' => 'Läs mer',
+	), $atts));
+
+	mt_srand((double)microtime() * 1000000);
+	$rnum = mt_rand();
+
+$new_string = '<span><a onclick="read_toggle(' . $rnum . ', \'Läs mer\', \'Läs mindre\'); return false;" class="read-link" id="readlink' . $rnum . '" style="readlink" href="#">Läs mer</a></span>' . "\n";
+	$new_string .= '<div class="read_div" id="read' . $rnum . '" style="display: none;">' . do_shortcode($content) . '</div>';
+
+	return $new_string;
+}
+
+function js_for_excerpten() {
+	echo '<script>
+	function expand(param) {
+		param.style.display = (param.style.display == "none") ? "block" : "none";
+	}
+	function read_toggle(id, more, less) {
+		el = document.getElementById("readlink" + id);
+		el.innerHTML = (el.innerHTML == more) ? less : more;
+		expand(document.getElementById("read" + id));
+	}
+	</script>';
+}
+
+add_action('wp_head', 'js_for_excerpten');
+add_action('init', 'nya_shortcodes');
 ?>

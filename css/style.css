@@ -745,6 +745,50 @@ form > div > label {
   }
 }
 
+/* Jobs */
+
+.jobs {
+  text-align: left;
+}
+
+.job {
+  padding: 20px;
+}
+
+.jobs p, .read_div {
+  font-size: 0.9em;
+  color: #666;
+  font-family: 'Open Sans',Montserrat,'Lucida Grande',sans-serif;
+  font-weight: 300;
+}
+
+.read_div a {
+  color:red;
+}
+
+.jobs img {
+  width: 120px;
+  margin: 1em auto;
+}
+
+.jobs h5 {
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+*[id^='readlink'] {
+ color: black;
+ -webkit-box-shadow: none !important;
+ box-shadow: none !important;
+ -webkit-transition: none !important;
+}
+
+*[id^='readlink']:hover {
+ color: black;
+ text-decoration: none;
+}
+
 /* Footer */
 
 footer {
