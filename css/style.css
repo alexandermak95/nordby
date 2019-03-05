@@ -789,6 +789,196 @@ form > div > label {
  text-decoration: none;
 }
 
+/* Blogg */
+.blogg-bild img {
+  width: 90%;
+  height: 100%;
+}
+
+.blogg-title h2 {
+  color: #646665;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.blogg-bild {
+  text-align: center;
+}
+
+.col-md-12.article {
+  text-align: left;
+  padding: 3em;
+}
+
+.blogg-text  {
+  margin: 2em 3.3em;
+}
+
+.blogg-text p {
+  font-family: 'Open Sans',Montserrat,'Lucida Grande',sans-serif;
+  font-weight: 100;
+  color: #666;
+}
+
+.blogg-meta span {
+  color: #666;
+  font-weight: 600;
+  font-size:12px;
+  font-style: normal;
+}
+
+.blogg-meta p {
+  color:black;
+  font-size:12px;
+  font-style: italic;
+}
+
+.blogg-content a {
+  color:#c00;
+}
+
+.blogg-content a:hover {
+  color:#c00;
+  text-decoration: none;
+}
+
+.next.page-numbers {
+  float: right;
+  display: block;
+}
+
+.prev.page-numbers {
+  float: left;
+  display: block;
+}
+
+.page-numbers.current {
+  display: none;
+}
+
+.page-numbers {
+  display: none;
+}
+
+.pagination-links {
+  padding: 5%;
+}
+
+.pagination-links a {
+  color: #c00;
+}
+
+.pagination-links a:hover {
+  color: #c00;
+  text-decoration: none;
+}
+
+/* Share buttons */
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.resp-sharing-button {
+  border-radius: 0;
+  transition: 25ms ease-out;
+  padding: 0 2px;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: sub;
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39;
+  border-color: #dd4b39;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.fa.fa-star {
+  color:gold;
+  background: #eee;
+  font-size: 1.5em;
+  vertical-align: sub;
+  cursor: pointer;
+}
+
 /* Footer */
 
 footer {

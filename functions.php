@@ -156,8 +156,13 @@ function my_acf_google_map_api( $api ){
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+function custom_excerpt_length($length){
+  return 37;
+}
+add_filter('excerpt_length', 'custom_excerpt_length', 999);
+
 function custom_excerpt_more ($more){
-  return '[...]';
+  return '[...]<a href="'.get_the_permalink().'">Läs hela...</a>';
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
 
