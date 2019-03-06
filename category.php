@@ -101,7 +101,7 @@ $categories = get_categories( array(
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12" style="padding: 2em 7em;">
+          <div class="col-md-12 sidebar-bottom">
             <div class="widgets-bottom" style="background:#454545;">
               <div class="row">
                 <?php get_sidebar("main-sidebar-left") ?>

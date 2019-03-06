@@ -1,3 +1,4 @@
+
 <?php
 $categories = get_categories( array(
     'orderby' => 'post_date',
@@ -13,13 +14,15 @@ $categories = get_categories( array(
       <div class="col-lg-12 content-butiker">
         <div class="content-head">
           <h1><?php wp_title('');?></h1>
+          <?php $title = single_cat_title('',false)?>
           <div id="butik-cat">
-            <span id="active-cat" style="margin-right: -6px;">
+            <span  style="margin-right: -6px;">
               <a class="butik-cat"href="<?php the_field('alla_inlagg', 'option');?>">SENASTE</a>
             </span>
             <?php  $tags = get_tags(array('get'=>'all'));
-            foreach ($tags as $tag):
-                echo'<span style="margin-right: -5px;">';
+            foreach ($tags as $tag): ?>
+                <span id="active-cat" style="margin-right: -5px;">
+                <?php
                 echo '<a class="butik-cat" href="'. get_term_link($tag).'">'. $tag->name .'</a>';
                 echo '</span>';
             endforeach;

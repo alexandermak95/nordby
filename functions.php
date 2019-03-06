@@ -222,10 +222,14 @@ function js_for_excerpten() {
 	function expand(param) {
 		param.style.display = (param.style.display == "none") ? "block" : "none";
 	}
+	function extend(param) {
+		param.style.display = (param.style.display == "block") ? "none" : "block";
+	}
 	function read_toggle(id, more, less) {
 		el = document.getElementById("readlink" + id);
 		el.innerHTML = (el.innerHTML == more) ? less : more;
 		expand(document.getElementById("read" + id));
+		extend(document.getElementById("tom"));
 	}
 	</script>';
 }

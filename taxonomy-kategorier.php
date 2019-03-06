@@ -4,7 +4,7 @@ get_header();
   <?php
   $categories = get_categories( array(
       'orderby' => 'title',
-      'order'   => 'ASC',
+      'order'   => 'DESC',
       'taxonomy' => 'kategorier',
       'hide_empty'   => 0,
   ) );
