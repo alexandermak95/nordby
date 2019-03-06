@@ -128,6 +128,37 @@ register_taxonomy('kategorier', 'butiker', $taxarg);
 add_action('init', 'taxonomies_reg');
 
 
+//Sidebar
+function widget(){
+  register_sidebar(array(
+
+  "name" => ("Widgets left"),
+  "id"   => "main-sidebar-left",
+  "description" => ("Widgets för bloggen (left)"),
+  'before_title'  => '<h4 class="widgettitle">',
+	'after_title'   => '</h4>'
+));
+  register_sidebar(array(
+
+  "name" => ("Widgets middle"),
+  "id"   => "main-sidebar-middle",
+  "description" => ("Widgets för bloggen (middle)"),
+  'before_title'  => '<h4 class="widgettitle">',
+	'after_title'   => '</h4>'
+));
+  register_sidebar(array(
+
+  "name" => ("Widgets right"),
+  "id"   => "main-sidebar-right",
+  "description" => ("Widgets för bloggen (right)"),
+  'before_title'  => '<h4 class="widgettitle">',
+	'after_title'   => '</h4>'
+));
+}
+
+add_action("widgets_init", "widget");
+
+
 //order by title
 function order_cats ($query){
     $query->set('orderby', 'title');

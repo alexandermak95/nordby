@@ -277,15 +277,15 @@ $(document).ready(function(){
 // Bokmärke button
 (function($) {
   $('#bokmarke').click(function() {
-    if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
+    if (window.sidebar && window.sidebar.addPanel) {
       window.sidebar.addPanel(document.title, window.location.href, '');
-    } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite
+    } else if (window.external && ('AddFavorite' in window.external)) {
       window.external.AddFavorite(location.href, document.title);
-    } else if (window.opera && window.print) { // Opera Hotlist
+    } else if (window.opera && window.print) { 
       this.title = document.title;
       return true;
-    } else { // webkit - safari/chrome
-      alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+    } else {
+      alert('Tryck ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D För att lägga till sidan till favorieter.');
     }
   });
 })(jQuery);;
