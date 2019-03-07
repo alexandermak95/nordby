@@ -10,21 +10,28 @@ $categories = get_categories( array(
 <div class="wrapper" style="background-image:url('<?php the_field('single_page_background','option');?>'); overflow:hidden;">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 content-butiker">
+      <div class="col-lg-12 content-butiker" id="blogg">
         <div class="content-head">
           <h1><?php wp_title('');?></h1>
-          <div id="butik-cat">
-            <span id="active-cat" style="margin-right: -6px;">
-              <a class="butik-cat"href="<?php the_field('alla_inlagg', 'option');?>">SENASTE</a>
-            </span>
+          <nav class="navbar navbar-expand-lg" id="butik-cat">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon">VISA ALLT</span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarNav">
+             <ul class="navbar-nav">
+               <a id="active-single" class="butik-cat" href="<?php the_field('alla_inlagg', 'option');?>">SENASTE</a>
+            </ul>
             <?php  $tags = get_tags(array('get'=>'all'));
             foreach ($tags as $tag):
-                echo'<span style="margin-right: -5px;">';
+                echo '<ul class="navbar-nav">';
+                // echo'<span style="margin-right: -5px;">';
                 echo '<a class="butik-cat" href="'. get_term_link($tag).'">'. $tag->name .'</a>';
-                echo '</span>';
+                // echo '</span>';
+                echo '</ul>';
             endforeach;
             ?>
             <?php foreach( $categories as $category ) :
+              echo '<ul class="navbar-nav">';
               $category_link = sprintf(
                 '<a class="butik-cat" href="%1$s" alt="%2$s">%3$s </a>',
                 esc_url( get_category_link( $category->term_id ) ),
@@ -33,8 +40,10 @@ $categories = get_categories( array(
               ); ?>
 
               <?php echo sprintf( esc_html__( '%s', 'textdomain' ), $category_link );?>
+              </ul>
               <?php  endforeach;?>
-          </div>
+            </div>
+          </nav>
         </div>
         <div class="row" style="width: 100%; margin: 0em auto;">
           <?php while(have_posts()) : the_post();?>

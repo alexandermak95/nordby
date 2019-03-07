@@ -6,15 +6,22 @@
         <?php while(have_posts()) : the_post();?>
           <h2 style="margin-bottom:1.5em;color:#666;font-weight:700;">Om Nordby</h2>
           <?php if(have_rows('lankgrupp', 'option')) : ?>
-            <div id="butik-cat">
+            <nav class="navbar navbar-expand-lg" id="butik-cat">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon">VISA ALLT</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
            <?php while(have_rows('lankgrupp', 'option')) : the_row();?>
              <?php $link = get_sub_field('lank');?>
              <span class="cat-span">
-               <a class="butik-cat <?php if($link['title'] == get_the_title()) : echo 'active-cat'; endif; ?>" href="<?php echo $link['url']; ?>"><?php echo $link['title'];?></a>
+               <ul class="navbar-nav">
+                 <a class="butik-cat <?php if($link['title'] == get_the_title()) : echo 'active-cat'; endif; ?>" href="<?php echo $link['url']; ?>"><?php echo $link['title'];?></a>
+               </ul>
              </span>
           <?php endwhile;endif; ?>
            </div>
         <?php endwhile; ?>
+          </nav>
         </div>
         <?php if(!empty(get_the_content()) || !empty(get_the_post_thumbnail())) : ?>
         <div class="content-main">

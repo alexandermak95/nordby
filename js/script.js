@@ -32,7 +32,7 @@
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginRight = "250px";
-  document.getElementById("main").style.opacity = "0.4";
+  document.getElementById("main").style.opacity = "0.7";
 }
 
 function closeNav() {
@@ -281,7 +281,7 @@ $(document).ready(function(){
       window.sidebar.addPanel(document.title, window.location.href, '');
     } else if (window.external && ('AddFavorite' in window.external)) {
       window.external.AddFavorite(location.href, document.title);
-    } else if (window.opera && window.print) { 
+    } else if (window.opera && window.print) {
       this.title = document.title;
       return true;
     } else {

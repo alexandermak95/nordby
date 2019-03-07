@@ -39,6 +39,7 @@ if( function_exists('acf_add_options_page') ) {
 
 
 register_nav_menu('sidebar', 'Sidebar menu');
+register_nav_menu('menu for large hero template', 'Navmeny för stor-hero mallen');
 
 function wpdocs_my_search_form( $form ) {
     $form = '<form role="search" method="get" id="searchform" class="searchform"  action="' . home_url( '/' ) . '" >

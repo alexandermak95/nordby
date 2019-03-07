@@ -30,3 +30,38 @@ $args = array(
 )
 );
 $shop = new WP_QUERY($args);
+
+
+
+
+
+
+<?php if(get_row_layout() == 'side_banners-large') : ?>
+
+    <div class="row">
+      <?php while(have_rows('banner_4x4')) : the_row();?>
+        <div class="col-md-12 large-banner">
+          <a href="<?php the_sub_field('link');?>"> <img src="<?php the_sub_field('image');?>" alt=""> </a>
+        </div>
+      <?php endwhile; ?>
+    </div>
+  <?php elseif(get_row_layout() == 'side_banners-small') : ?>
+    <div class="row">
+      <?php while(have_rows('banner_2x2')) : the_row();?>
+        <div class="col-md-6 small-banner">
+          <a href="<?php the_sub_field('link');?>"> <img src="<?php the_sub_field('image');?>" alt=""> </a>
+        </div>
+      <?php endwhile; ?>
+    </div>
+  <?php elseif(get_row_layout() == 'side_banners-wide') : ?>
+    <div class="row">
+      <?php while(have_rows('banner_4x3')) : the_row();?>
+        <div class="col-md-12 wide-banner">
+          <a href="<?php the_sub_field('link');?>"> <img src="<?php the_sub_field('image');?>" alt=""> </a>
+        </div>
+      <?php endwhile; ?>
+    </div>
+  <?php endif; ?>
+
+</div>
+</div>

@@ -13,7 +13,12 @@
                         <div class="col-md-12">
                           <div class="content-slider" style="background-image:url('<?php the_sub_field('image');?>');">
                             <div class="content-slider-text">
+                              <?php if(!empty(get_sub_field('subtitle')) || !empty(get_sub_field('title')) ) : ?>
+                                <h2><?php the_sub_field('title');?></h2>
+                                <p><?php the_sub_field('subtitle');?></p>
+                              <?php else: ?>
                               <h2><?php the_title();?></h2>
+                            <?php endif; ?>
                             </div>
                           </div>
                         </div>
@@ -43,13 +48,18 @@
             <p><?php the_field('oppettider');?></p>
           </div>
            <?php endif; ?>
-          <?php if(!empty(get_field('telefonnummer'))) : ?>
+          <?php if(!empty(get_field('telefonnummer')) || !empty(get_field('kontakt'))) : ?>
           <div class="col-md-2">
             <b>KONTAKT</b><br>
+            <?php if(have_rows('kontakt')) : while(have_rows('kontakt')) : the_row(); ?>
+              <p><?php the_sub_field('tel');?></p>
+              <a href="mailto:<?php the_sub_field('e-postadress');?>">Skicka e-post</a>
+            <?php endwhile; else: ?>
             <p><?php the_field('telefonnummer');?></p>
+          <?php endif; ?>
           </div>
            <?php endif; ?>
-          <?php if(!empty(get_the_content())) : ?>
+          <?php if(!empty(get_the_content()) || !empty(get_field('lank_till_butikens_hemsida'))) : ?>
           <div class="col-md-2">
             <b>OM BUTIKEN</b><br>
             <?php if(has_excerpt()) : the_excerpt(); else: the_content(); endif;?>
@@ -67,7 +77,6 @@
         </div>
         <div class="row">
           <div id="tom">
-
           </div>
         </div>
       </div>

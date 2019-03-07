@@ -12,24 +12,34 @@ get_header();
    <div class="wrapper" style="background-image:url('<?php the_field('single_page_background','option');?>')">
      <div class="container">
        <div class="row">
-         <div class="col-lg-12 content-butiker">
+         <div class="col-lg-12 content-butiker" id="butiker-tax">
+           <div class="head-tax">
            <h1><?php single_cat_title();?></h1>
            <?php $title = single_cat_title('', false);?>
            <?php get_search_form();?>
-           <div id="butik-cat">
-             <a style="margin-right: -4px;" class="butik-cat"href="<?php the_field('alla_butiker_lank', 'option'); ?>">Alla butiker</a>
-           <?php foreach( $categories as $category ) :
-               ?>
-              <span id="<?php if($category->name == $title): echo 'active-cat'; endif; ?>">
-                <?php  $category_link = sprintf(
-                   '<a class="butik-cat"  href="%1$s" alt="%2$s">%3$s </a>',
-                   esc_url( get_category_link( $category->term_id ) ),
-                   esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ),
-                   esc_html( $category->name )
-                 ); ?>
-               <?php echo sprintf( esc_html__( '%s', 'textdomain' ), $category_link );?>
-               </span>
-               <?php  endforeach;?>
+             <nav class="navbar navbar-expand-lg" id="butik-cat">
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">VISA ALLT</span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <a  class="butik-cat"href="<?php the_field('alla_butiker_lank', 'option'); ?>">Alla butiker</a>
+               </ul>
+             <?php foreach( $categories as $category ) :
+                 ?>
+                <span class="span-flex" id="<?php if($category->name == $title): echo 'active-cat'; endif; ?>">
+                  <ul class="navbar-nav">
+                  <?php  $category_link = sprintf(
+                     '<a class="butik-cat"  href="%1$s" alt="%2$s">%3$s </a>',
+                     esc_url( get_category_link( $category->term_id ) ),
+                     esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ),
+                     esc_html( $category->name )
+                   ); ?>
+                   <?php echo sprintf( esc_html__( '%s', 'textdomain' ), $category_link );?>
+                  </ul>
+                 </span>
+                 <?php  endforeach;?>
+             </nav>
            </div>
            <hr>
            <div class="row" style="width: 80%; margin: 0em auto;">
