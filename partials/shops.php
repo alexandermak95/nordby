@@ -42,9 +42,9 @@ $shops = new WP_QUERY($args);
           </nav>
         </div>
         <hr style="width:80%;">
-        <div class="row" style="width: 80%; margin: 0em auto;">
+        <div class="row" id="shops-row">
           <?php while($shops->have_posts()) : $shops->the_post();?>
-            <div class="col-xs-6 col-sm-6 col-md-6 butik-letter">
+            <div class="col-md-6 butik-letter">
               <div class="butik-info">
                 <div class="info-col">
                   <div class="butik-name">

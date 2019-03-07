@@ -1,5 +1,6 @@
 #html {
   margin-top: 0 !important;
+  overflow-x: hidden;
 }
 
 #wpadminbar {
@@ -41,12 +42,11 @@ header .col-lg-8 {
 header .logo-text {
   color: white;
   text-align: center;
-  font-size: 1.1em;
+  font-size: 1.2em;
   line-height: 1.2em;
   font-weight: 600;
   text-transform: uppercase;
 }
-
 
 .sidenav {
   height: 100%;
@@ -55,7 +55,7 @@ header .logo-text {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #111;
+  background-color: #000;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 15px;
@@ -65,10 +65,9 @@ header .logo-text {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 15px;
-  color: white;
+  color: #aaa;
   font-weight: 200;
   display: block;
-  opacity: 0.6;
   transition: 0.1s;
   text-transform: uppercase;
 
@@ -86,8 +85,7 @@ header .logo-text {
   right: 25px;
   font-size: 30px;
   margin-left: 50px;
-  color:white;
-  opacity: 0.7;
+  color:#aaa;
   font-weight: 100;
 }
 
@@ -100,7 +98,6 @@ header .logo-text {
 }
 
 .sidenav .closebtn:hover {
-  opacity: 1;
   text-decoration: none;
   color: white;
 }
@@ -123,6 +120,8 @@ header .logo-text {
 
 #search-input {
   width: 100%;
+  border: 1px solid #999;
+  padding: 4px;
 }
 
 form > div {
@@ -164,7 +163,7 @@ form > div > label {
 }
 
 .menu-button i {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 
 #sidesocial {
@@ -206,7 +205,7 @@ form > div > label {
   }
 
   #butiker-tax .head-tax {
-    padding: 0 3em;
+    padding: 0 1em;
   }
 
   #butik-cat .navbar-toggler {
@@ -566,14 +565,26 @@ form > div > label {
   background: #F7FAF8;
 }
 
+#shops-row {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .wrapper #searchform {
-  width: 20%;
+  width: 250px;
   margin: 2em auto 0.5em auto;
 }
 
+.wrapper #searchform label {
+  color: #ccc;
+  transform: rotate(90deg);
+}
+
 .butik-cat {
-  padding: 12px 8px;
-  font-size: 0.8rem;
+  padding: 8px 12px;
+  font-size: 1rem;
+  line-height: 20px;
+  font-family: 'Open Sans Condensed','Open Sans','Lucida Grande',sans-serif;
   background: #333334;
   color: white;
   margin: 0 1px;
@@ -639,7 +650,19 @@ form > div > label {
 
 @media (max-width:990px) {
   .content-head {
-    padding: 3em 3em;
+    padding: 3em 1em;
+  }
+  #shops-row {
+    width: 100%;
+  }
+  #shops-row h5 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .butik-cat {
+    padding: 5px 8px;
+    font-weight: 700;
+    font-size: 1rem;
   }
 }
 
@@ -758,7 +781,62 @@ form > div > label {
   font-size: 2.2em;
   line-height: 1em;
   font-weight: 400;
+}
+.row.butik-metabox {
+  min-height:150px;
+}
 
+@media (max-width:1200px) {
+  .col-md-12.meta-wrap .read_div {
+    right: -125%;
+    width: 875px;
+    margin-top: 3em;
+  }
+}
+
+@media (min-width:769px) and (max-width:992px) {
+  .col-md-12.meta-wrap .read_div {
+    right: -3%;
+    width: 100%;
+    margin-top: 4.6em;
+  }
+}
+
+@media (max-width:1150px) {
+  #single-butik {
+    width: 100%;
+    height: 300px;
+    margin: 3em auto 3em 0;
+  }
+}
+
+@media (max-width:767px) {
+  #single-butik {
+    width: 100%;
+    height: 200px;
+    margin: 3em auto 3em 0;
+  }
+  .content-slider {
+    height: 150px;
+    width: inherit;
+  }
+  .col-md-12.meta-wrap .read_div {
+    right: -2%;
+    width: 100%;
+    margin-top: 4em;
+  }
+}
+
+@media (max-width:990px) {
+  .col-md-12.meta-wrap .col-lg-4,.col-md-12.meta-wrap .col-lg-2 {
+    margin-bottom: 1em;
+  }
+  #tom {
+    height: 500px;
+  }
+  .col-md-12.meta-wrap .read_div {
+    margin-top: 5em;
+  }
 }
 
 /* info pages */
@@ -823,7 +901,7 @@ form > div > label {
 }
 
 .two-columns a {
-  color:red;
+  color:#c00;
   text-decoration: none;
 }
 
@@ -841,7 +919,6 @@ form > div > label {
 .two-columns strong {
   font-family: 'Open Sans',Montserrat,'Lucida Grande',sans-serif;
   font-weight: 600;
-  color: black;
 }
 
 .two-columns h1 {
@@ -925,6 +1002,15 @@ form > div > label {
 	text-transform: uppercase;
 	padding: 10px;
 }
+
+.street-wrap h4 {
+  font-weight: 600;
+}
+
+.two-columns strong {
+  color:#646665;
+}
+
 @media (min-width: 767px) {
   .wp-columns-custom h1 {
     width: 130%;
@@ -934,6 +1020,19 @@ form > div > label {
   .wp-columns-custom p {
     width: 160%;
   }
+}
+
+@media (max-width: 790px) {
+  .content-extra {
+    padding: 0 10px;
+  }
+  .wpcf7-form input {
+    width: 100%;
+  }
+  .wpcf7-form textarea {
+    width: 100%;
+  }
+
 }
 
 /* Jobs */

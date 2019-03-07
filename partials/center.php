@@ -58,7 +58,7 @@
                    <p class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></p>
                   </div>
                 <?php elseif(get_row_layout() == 'text_block_two_columns') : ?>
-                  <div class="two-columns" style="padding:0 <?php the_sub_field('padding');?>%">
+                  <div class="two-columns" style="padding:<?php the_sub_field('padding');?>%">
                     <?php if(!empty(get_sub_field('headline'))) :  ?>
                       <h1><?php the_sub_field('headline'); ?></h1>
                     <?php endif; ?>
@@ -85,6 +85,7 @@
             </div>
           </div>
         </div>
+        <br><br>
       </div>
     </div>
   </div>

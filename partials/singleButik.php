@@ -34,22 +34,22 @@
     </div>
   </div>
   <div class="container">
-    <div class="row" style="min-height:150px;background:rgba(255, 255, 255, 0.9)">
+    <div class="row butik-metabox" style="background:rgba(255, 255, 255, 0.9)">
       <div class="col-md-12 meta-wrap">
         <div class="row margin-6">
           <?php if(!empty(get_field('logo'))) : ?>
-          <div class="col-md-4">
+          <div class="col-lg-4">
             <img src="<?php the_field('logo');?>" alt="">
           </div>
         <?php endif; ?>
         <?php if(!empty(get_field('oppettider'))) : ?>
-          <div class="col-md-2">
+          <div class="col-lg-2">
             <b>ÖPPETTIDER</b>
             <p><?php the_field('oppettider');?></p>
           </div>
            <?php endif; ?>
           <?php if(!empty(get_field('telefonnummer')) || !empty(get_field('kontakt'))) : ?>
-          <div class="col-md-2">
+          <div class="col-lg-2">
             <b>KONTAKT</b><br>
             <?php if(have_rows('kontakt')) : while(have_rows('kontakt')) : the_row(); ?>
               <p><?php the_sub_field('tel');?></p>
@@ -60,7 +60,7 @@
           </div>
            <?php endif; ?>
           <?php if(!empty(get_the_content()) || !empty(get_field('lank_till_butikens_hemsida'))) : ?>
-          <div class="col-md-2">
+          <div class="col-lg-2">
             <b>OM BUTIKEN</b><br>
             <?php if(has_excerpt()) : the_excerpt(); else: the_content(); endif;?>
              <?php if(!empty(get_field('lank_till_butikens_hemsida'))) : ?>
@@ -69,7 +69,7 @@
           </div>
            <?php endif; ?>
           <?php if(!empty(get_the_terms($post->ID, 'kategorier'))) : ?>
-          <div class="col-md-2">
+          <div class="col-lg-2">
             <b>KATEGORIER</b><br>
             <p><?php the_terms($post->ID, 'kategorier');?></p>
           </div>
