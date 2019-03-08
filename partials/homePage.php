@@ -13,13 +13,13 @@
 
 <section class="container-fluid home-content">
   <div class="row">
-    <div class="col-lg-10 home-content-col" style="background: white; margin: 0 auto;">
+    <div class="col-lg-8 home-content-col" style="background: white; margin: 0 auto;">
       <?php if(have_rows('content')) : while(have_rows('content')) : the_row();?>
       <?php if(get_row_layout() == 'text_puffar') : ?>
         <div class="row text-puff">
           <?php while (have_rows('text_puff')) : the_row();?>
             <?php $blockLink = get_sub_field('link');?>
-            <div class="col-sm-6">
+            <div class="col-sm-6" style="padding:0 5px;">
               <a href="<?php echo $blockLink['url'];?>">
               <div class="holder" style="background-color: <?php the_sub_field('background_color');?>;cursor: pointer;">
                 <h2><?php the_sub_field('title');?></h2>
@@ -47,9 +47,9 @@
           </div>
         </div>
       <?php elseif (get_row_layout() == 'bild_puffar') : ?>
-        <div class="row">
+        <div class="row" style="justify-content:center;">
           <?php while (have_rows('bild_puff')) : the_row();?>
-          <div class="col-sm-6">
+          <div class="col-sm-6 bild-puff">
             <a href="<?php the_sub_field('link');?>">
               <div class="holder-img" style="background-image: url('<?php the_sub_field('image');?>');"></div>
             </a>

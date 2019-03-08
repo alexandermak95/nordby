@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 hero-large-content">
+      <div class="col-lg-9 hero-large-content">
         <div class="row">
           <div class="col-md-8 articles">
             <?php while (have_rows('content')) : the_row();?>

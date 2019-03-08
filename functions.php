@@ -15,9 +15,7 @@ function styles () {
 
 add_action("wp_enqueue_scripts", "styles");
 
-
-
-
+// ACF option pages
 if( function_exists('acf_add_options_page') ) {
   acf_add_options_page(array(
     'page_title' 	=> 'More options',
@@ -37,10 +35,12 @@ if( function_exists('acf_add_options_page') ) {
   ));
 }
 
+// navbars
 
 register_nav_menu('sidebar', 'Sidebar menu');
 register_nav_menu('menu for large hero template', 'Navmeny för stor-hero mallen');
 
+// custom search form
 function wpdocs_my_search_form( $form ) {
     $form = '<form role="search" method="get" id="searchform" class="searchform"  action="' . home_url( '/' ) . '" >
     <div id="searchbtn">
@@ -53,7 +53,7 @@ function wpdocs_my_search_form( $form ) {
 }
 add_filter( 'get_search_form', 'wpdocs_my_search_form' );
 
-
+// support for SVG
 
 function cc_mime_types($mimes) {
  $mimes['svg'] = 'image/svg+xml';
@@ -61,9 +61,11 @@ function cc_mime_types($mimes) {
 }
 add_filter('upload_mimes', 'cc_mime_types');
 
+
+// Support for thumbnails
 add_theme_support( 'post-thumbnails' );
 
-
+// Custom post types
 function custom_posttypes() {
   $args1 = array(
     'labels' => array(
@@ -108,6 +110,7 @@ function custom_posttypes() {
 }
 add_action('init', 'custom_posttypes');
 
+// custom taxonomies
 function taxonomies_reg() {
 $taxarg = array(
   'labels' => array(
@@ -129,7 +132,7 @@ register_taxonomy('kategorier', 'butiker', $taxarg);
 add_action('init', 'taxonomies_reg');
 
 
-//Sidebar
+//Sidebars
 function widget(){
   register_sidebar(array(
 
@@ -188,6 +191,8 @@ function my_acf_google_map_api( $api ){
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+
+// custom excerpt
 function custom_excerpt_length($length){
   return 37;
 }
@@ -212,7 +217,7 @@ function egen_excerpt($atts, $content = null) {
 	mt_srand((double)microtime() * 1000000);
 	$rnum = mt_rand();
 
-$new_string = '<span><a onclick="read_toggle(' . $rnum . ', \'Läs mer\', \'Läs mindre\'); return false;" class="read-link" id="readlink' . $rnum . '" style="readlink" href="#">Läs mer</a></span>' . "\n";
+  $new_string = '<span><a onclick="read_toggle(' . $rnum . ', \'Läs mer\', \'Läs mindre\'); return false;" class="read-link" id="readlink' . $rnum . '" style="readlink" href="#">Läs mer</a></span>' . "\n";
 	$new_string .= '<div class="read_div" id="read' . $rnum . '" style="display: none;">' . do_shortcode($content) . '</div>';
 
 	return $new_string;
