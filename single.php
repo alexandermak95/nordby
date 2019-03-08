@@ -1,3 +1,4 @@
+<?php get_header(); ?>
 <?php
 $categories = get_categories( array(
     'orderby' => 'post_date',
@@ -12,51 +13,58 @@ $categories = get_categories( array(
     <div class="row">
       <div class="col-lg-12 content-butiker" id="blogg">
         <div class="content-head">
-          <h1><?php wp_title('');?></h1>
+          <h1 id="single-post-terms"><?php the_terms($post->ID, 'category')?></h1>
+          <?php $title = get_the_category($post->ID);?>
           <nav class="navbar navbar-expand-lg" id="butik-cat">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon">VISA ALLT</span>
            </button>
            <div class="collapse navbar-collapse" id="navbarNav">
              <ul class="navbar-nav">
-               <a id="active-single" class="butik-cat" href="<?php the_field('alla_inlagg', 'option');?>">SENASTE</a>
+               <span>
+               <a class="butik-cat" href="<?php the_field('alla_inlagg', 'option');?>">SENASTE</a>
+               </span>
             </ul>
             <?php  $tags = get_tags(array('get'=>'all'));
             foreach ($tags as $tag):
                 echo '<ul class="navbar-nav">';
-                // echo'<span style="margin-right: -5px;">';
+                echo "<span>";
                 echo '<a class="butik-cat" href="'. get_term_link($tag).'">'. $tag->name .'</a>';
-                // echo '</span>';
+                echo "</span>";
                 echo '</ul>';
             endforeach;
             ?>
             <?php foreach( $categories as $category ) :
-              echo '<ul class="navbar-nav">';
-              $category_link = sprintf(
-                '<a class="butik-cat" href="%1$s" alt="%2$s">%3$s </a>',
-                esc_url( get_category_link( $category->term_id ) ),
-                esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ),
-                esc_html( $category->name )
-              ); ?>
-
-              <?php echo sprintf( esc_html__( '%s', 'textdomain' ), $category_link );?>
+              echo '<ul class="navbar-nav">'; ?>
+                <span class="span-flex" id="<?php if($category->name == $title[0]->name): echo 'active-cat'; endif; ?>">
+                  <?php
+                  $category_link = sprintf(
+                    '<a class="butik-cat" href="%1$s" alt="%2$s">%3$s </a>',
+                    esc_url( get_category_link( $category->term_id ) ),
+                    esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ),
+                    esc_html( $category->name )
+                  ); ?>
+                  <?php echo sprintf( esc_html__( '%s', 'textdomain' ), $category_link );?>
+                </span>
               </ul>
-              <?php  endforeach;?>
+            <?php  endforeach;?>
             </div>
           </nav>
         </div>
         <div class="row" style="width: 100%; margin: 0em auto;">
           <?php while(have_posts()) : the_post();?>
             <article class="col-md-12 article">
+              <div class="blogg-text">
+                <div class="blogg-title">
+                  <a href="<?php the_permalink();?>"><h2 id="single-post-title"><?php the_title();?></h2></a>
+                </div>
+              </div>
               <div class="blogg-bild">
                 <?php the_post_thumbnail(); ?>
               </div>
               <div class="blogg-text">
-                <div class="blogg-title">
-                  <a href="<?php the_permalink();?>"><h2><?php the_title();?></h2></a> 
-                </div>
                 <div class="blogg-content">
-                  <?php the_excerpt();?>
+                  <?php the_content();?>
                 </div>
                 <div class="blogg-meta">
                   <p><span>Puplicerat av:</span> <?php the_author(); echo ' '; the_date('Y-m-d');?></p>
@@ -98,16 +106,34 @@ $categories = get_categories( array(
             </article>
           <?php endwhile;?>
         </div>
-        <div class="row" style="width: 100%; margin: 0em auto;">
-          <div class="col-md-12 article">
-            <div class="pagination-links">
-              <?php echo paginate_links(array( 'next_text' => 'Visa äldre inlägg»', 'prev_text' => '«Visa senare inlägg'));?>
+        <?php $args = array('posts_per_page' => 5, 'offset' => 1, 'orderby' => 'date', 'order' => 'ASC');
+              $related = new WP_QUERY($args);?>
+        <div class="row">
+          <div class="col-md-12 related-wrap">
+            <div class="related-posts">
+              <?php while($related->have_posts()) : $related->the_post();?>
+                  <div class="row">
+                    <hr>
+                    <div class="col-sm-9">
+                      <a href="<?php the_permalink();?>"><h2><?php the_title();?></h2></a>
+                      <p><?php the_excerpt();?></p>
+                      <div class="blogg-meta">
+                        <p><span>Puplicerat av:</span> <?php the_author(); echo ' '; the_date('Y-m-d');?></p>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="bild">
+                        <?php the_post_thumbnail();?>
+                      </div>
+                    </div>
+                  </div>
+              <?php endwhile; ?>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 sidebar-bottom">
-            <div class="widgets-bottom" style="background:#454545;">
+            <div class="widgets-bottom" style="background:#454545; font-style: italic;">
               <div class="row">
                 <?php get_sidebar("main-sidebar-left") ?>
                 <?php get_sidebar("main-sidebar-middle") ?>
@@ -121,3 +147,4 @@ $categories = get_categories( array(
   </div>
 </div>
 <br><br><br><br><br>
+<?php get_footer(); ?>

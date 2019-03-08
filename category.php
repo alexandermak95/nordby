@@ -21,14 +21,16 @@ $categories = get_categories( array(
            </button>
            <div class="collapse navbar-collapse" id="navbarNav">
              <ul class="navbar-nav">
+               <span>
                <a class="butik-cat"href="<?php the_field('alla_inlagg', 'option');?>">SENASTE</a>
+               </span>
              </ul>
             <?php  $tags = get_tags(array('get'=>'all'));
             foreach ($tags as $tag):
                 echo '<ul class="navbar-nav">';
-                // echo'<span style="margin-right: -5px;">';
+                echo'<span>';
                 echo '<a class="butik-cat" href="'. get_term_link($tag).'">'. $tag->name .'</a>';
-                // echo '</span>';
+                echo '</span>';
                 echo '</ul>';
             endforeach;
             ?>

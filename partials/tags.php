@@ -26,10 +26,8 @@ $categories = get_categories( array(
             <?php  $tags = get_tags(array('get'=>'all'));
             foreach ($tags as $tag): ?>
                 <ul class="navbar-nav">
-                <span class="span-flex" id="active-cat">
-                <?php
-                echo '<a class="butik-cat" href="'. get_term_link($tag).'">'. $tag->name .'</a>';
-                echo '</span>';
+                  <?php
+                  echo '<a id="active-single" class="butik-cat" href="'. get_term_link($tag).'">'. $tag->name .'</a>';
                 echo '</ul>';
             endforeach;
             ?>
