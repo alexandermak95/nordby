@@ -33,12 +33,14 @@ function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginRight = "250px";
   document.getElementById("main").style.opacity = "0.7";
+  document.getElementById("body").style.backgroundColor = "#666";
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginRight= "0";
   document.getElementById("main").style.opacity = "1";
+	document.getElementById("body").style.backgroundColor = "#eee";
 }
 (function($){
 $('#iconified').on('keyup', function() {
@@ -289,3 +291,22 @@ $(document).ready(function(){
     }
   });
 })(jQuery);;
+
+//deals show/hide
+// let holder = document.querySelector('#deal-hover');
+// holder.addEventListener('click', function() {
+// 	let div = document.createElement('div');
+// 	div.appendChild(content)
+// 	newDiv.appendChild(div)
+// })
+
+jQuery(document).ready(function($) {
+$( '.deal-holder' ).on( 'click', function( event ){
+	$( this ).toggleClass('active');
+	// let content = document.querySelector('#deal');
+	// let newDiv = document.querySelector('#content-deal')
+    // $( content ).prependTo(newDiv);
+
+
+  });
+})

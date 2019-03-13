@@ -5,6 +5,8 @@ function styles () {
   wp_enqueue_style("Bootstrap", get_stylesheet_directory_uri(). "/css/bootstrap.min.css");
   wp_enqueue_style('font-awesome', get_stylesheet_directory_uri().'/css/font-awesome.css');
   wp_enqueue_style('font-1', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+  wp_enqueue_style('font-2', 'https://fonts.googleapis.com/css?family=Open+Sans');
+  wp_enqueue_style('font-3', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
   wp_enqueue_style('font-awesome-min', get_stylesheet_directory_uri().'/css/fontawesome.min.css');
   wp_enqueue_style('owl-style', get_stylesheet_directory_uri().'/css/owl.carousel.css');
   wp_enqueue_script('owlscript', get_template_directory_uri().'/js/owl.carousel.js', array('jquery'));
@@ -44,6 +46,7 @@ register_nav_menu('menu for large hero template', 'Navmeny för stor-hero mallen
 function wpdocs_my_search_form( $form ) {
     $form = '<form role="search" method="get" id="searchform" class="searchform"  action="' . home_url( '/' ) . '" >
     <div id="searchbtn">
+    <input type="hidden" name="search-type" value="normal" />
     <input class="empty" type="text"  value="' . get_search_query() . '" name="s" id="search-input"/>
     <label for="search-input">&#xF002;</label>
     </div>
@@ -83,8 +86,9 @@ function custom_posttypes() {
     'menu_icon' => 'dashicons-layout',
     'rewrite' => array('slug' => 'butiker'),
     'has_archive' => true,
-    'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+    'supports' => array( 'title', 'editor', 'thumbnail' ),
     'taxonomies' => array('kategorier'),
+    'show_in_rest'       => true,
   );
   register_post_type('butiker', $args1);
   $args2 = array(
@@ -105,8 +109,30 @@ function custom_posttypes() {
     'has_archive' => true,
     'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
     'taxonomies' => array('kategorier'),
+    'show_in_rest'       => true,
   );
   register_post_type('jobb', $args2);
+
+  $args3 = array(
+    'labels' => array(
+      'name' => 'Deals',
+      'singular_name' => 'Deal',
+      'add_new_item' => 'Lägg till en deal',
+      'all_items' => 'Alla deals',
+      'edit_item' => 'Redigera deal',
+      'view_item' => 'Visa deal',
+      'update_item' => 'Uppdatera deal',
+      'new_item' => 'Ny deal',
+      'not_found' => 'Inga deals funna'),
+    'public' => true,
+    'menu_position' => 15,
+    'menu_icon' => 'dashicons-products',
+    'rewrite' => array('slug' => 'deals'),
+    'has_archive' => true,
+    'supports' => array( 'title', 'editor', 'thumbnail' ),
+    'taxonomies' => array('deals-kategorier'),
+  );
+  register_post_type('deals', $args3);
 }
 add_action('init', 'custom_posttypes');
 
@@ -127,7 +153,24 @@ $taxarg = array(
   'hierarchical' => true,
   'has_archive' => true,
 );
-register_taxonomy('kategorier', 'butiker', $taxarg);
+register_taxonomy('kategorier','butiker', $taxarg);
+
+$taxarg2 = array(
+  'labels' => array(
+    'name' => 'Deals-kategorier',
+    'singular_name' => 'Deals-kategori',
+    'all_items' => 'Alla kategorier',
+    'edit_item' => 'Edit kategori',
+    'view_item' => 'Visa kategori',
+    'update_item' => 'Updatera kategori',
+    'add_new_item' => 'Lägg till en ny kategori',
+    'new_item_name' => 'Ny kategori namn',
+    'not_found' => 'Inga kategorier funna',
+  ),
+  'hierarchical' => true,
+  'has_archive' => true,
+);
+register_taxonomy('deals-kategorier', 'deals', $taxarg2);
 }
 add_action('init', 'taxonomies_reg');
 

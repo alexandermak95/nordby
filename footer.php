@@ -1,4 +1,4 @@
-  <?php if(!is_front_page()): ?>
+
     <div class="container-fluid fixed-bottom">
       <div class="row">
         <div class="col-sm-12 mobile-nav">
@@ -11,7 +11,6 @@
         </div>
       </div>
     </div>
-  <?php endif; ?>
     <footer>
       <div class="container">
         <div class="row">

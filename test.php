@@ -1,3 +1,34 @@
+  <?php  foreach( $posts as $post):  $i++; endforeach; echo '<p>'; echo $i; echo " erbjudanden</p>";?>
+
+
+
+<?php while($stores->have_posts()) : $stores->the_post();?>
+<div class="ss">
+  <?php the_title();?>
+  <?php
+
+$posts = get_field('deals');
+
+if( $posts ): ?>
+    <ul>
+    <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+        <?php setup_postdata($post); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+<?php endif; ?>
+</div>
+<?php endwhile; ?>
+
+
+
+
+
+
+
 <header>
   <div class="container-fluid">
     <div class="row">
@@ -65,3 +96,23 @@ $shop = new WP_QUERY($args);
 
 </div>
 </div>
+
+
+
+
+
+
+
+<div class="col-md-6 butik-letter">
+  <div class="butik-info">
+    <div class="info-col">
+      <?php if($letter != strtoupper(get_the_title()[0])) : echo ($letter != '') ? '</ul></div>' : ''; ?><?php endif; ?>
+      <div class="butik-name">
+        <a href="<?php the_permalink();?>"><h5><?php echo strtoupper( get_the_title()[0]);?></h5></a>
+      </div>
+      <div class="butik-tel">
+        <span><?php the_field('telefonnummer');?></span>
+      </div>
+
+    </div>
+  </div>

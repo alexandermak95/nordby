@@ -6,7 +6,7 @@
       <title><?php wp_title();?></title>
   </head>
   <?php wp_head(); ?>
-  <body <?php body_class(); ?>>
+  <body id="body" <?php body_class(); ?>>
     <header class="sticky-top">
       <nav class="navbar">
         <div class="logo">

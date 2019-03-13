@@ -10,9 +10,7 @@ $shops = new WP_QUERY($args);
      'hide_empty'   => 0,
  ) );
  ?>
-
-
-<div class="wrapper" style="background-image:url('<?php the_post_thumbnail_url();?>');">
+<div class="wrapper" style="background-image:url('<?php the_post_thumbnail_url();?>'); background-color:#eee;">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 content-butiker" id="butiker-tax">
@@ -41,22 +39,24 @@ $shops = new WP_QUERY($args);
            </div>
           </nav>
         </div>
-        <hr style="width:80%;">
         <div class="row" id="shops-row">
-          <?php while($shops->have_posts()) : $shops->the_post();?>
-            <div class="col-md-6 butik-letter">
-              <div class="butik-info">
-                <div class="info-col">
-                  <div class="butik-name">
-                    <a href="<?php the_permalink();?>"><h5><?php the_title();?></h5></a>
-                  </div>
-                  <div class="butik-tel">
-                    <span><?php the_field('telefonnummer');?></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <?php endwhile; wp_reset_postdata();?>
+          <div class="col-md-12">
+          <?php
+          if($shops->have_posts()) {   $letter = '';   while($shops->have_posts()) {
+            $shops->the_post();
+            if($letter != strtoupper(get_the_title()[0]))
+            {
+              echo ($letter != '') ? '</ul></section>' : '';
+              $letter = strtoupper(get_the_title()[0]);
+              echo '<section class="row letter '.strtoupper(get_the_title()[0]).'"><ul class="col-md-12"><div class="row">';
+            }
+            echo '<li class="col-md-6"><div class="butik-name"><a href="'.get_permalink().'">'.get_the_title().'</a></div>'.get_field('telefonnummer').'</li><br>';
+            }
+          }
+          echo "</div></ul></section>";
+           ?>
+           </div>
+          </div>
         </div>
         <br><br><br>
       </div>
